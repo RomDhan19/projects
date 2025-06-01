@@ -354,8 +354,8 @@ else:
 
     # Define enlargement parameters
     enlargement_factor = 2 # Example: enlarge by 2 times
-    m_sum = 30 # Reduced from 20 to 15 for better performance
-    n_sum = 30 # Reduced from 30 to 15 for better performance
+    m_sum = 30 
+    n_sum = 30 
 
     print(f"Calculating Fourier coefficients for m up to {m_sum}, n up to {n_sum}")
     # Calculate coefficients based on the original grayscale image and the desired summation limits m and n
@@ -466,5 +466,3 @@ else:
 
     plt.tight_layout()
     plt.show()
-
-
