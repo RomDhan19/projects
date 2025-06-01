@@ -1,9 +1,11 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
-# Define the image path
-image_path = 'chien.jpg'
+# Define the image path using os.path for robust path handling
+current_dir = os.path.dirname(os.path.abspath(__file__))
+image_path = os.path.join(current_dir, 'chien.jpg')
 
 # Load the color image
 color_image = cv2.imread(image_path)
@@ -11,6 +13,8 @@ color_image = cv2.imread(image_path)
 # Check if the image was loaded successfully
 if color_image is None:
     print(f'Error: Could not load image from {image_path}')
+    print(f'Current working directory: {os.getcwd()}')
+    print(f'Full image path: {image_path}')
 else:
     print(f'Successfully loaded color image with shape: {color_image.shape}')
 
@@ -350,8 +354,8 @@ else:
 
     # Define enlargement parameters
     enlargement_factor = 2 # Example: enlarge by 2 times
-    m_sum = 100 # Example parameter for summation limit m (adjust based on image size and desired detail)
-    n_sum = 100 # Example parameter for summation limit n (adjust based on image size and desired detail)
+    m_sum = 30 # Reduced from 20 to 15 for better performance
+    n_sum = 30 # Reduced from 30 to 15 for better performance
 
     print(f"Calculating Fourier coefficients for m up to {m_sum}, n up to {n_sum}")
     # Calculate coefficients based on the original grayscale image and the desired summation limits m and n
@@ -464,8 +468,3 @@ else:
     plt.show()
 
 
-    # You can now work with r_channel, g_channel, b_channel, and gray_image
-    # These are numpy arrays representing the image data.
-    # For example, to see the data type:
-    # print(f'Data type of color image: {color_image.dtype}')
-    # print(f'Data type of grayscale image: {gray_image.dtype}') 
